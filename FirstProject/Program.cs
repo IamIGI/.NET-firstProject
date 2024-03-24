@@ -3,10 +3,34 @@ using System.Text;
 
 namespace FristProject
 {
+    #region ProgramClassRegion_IGI
     class Program
     {
+        /// <summary>
+        /// Main method description, my
+        /// </summary>
+        /// <param name="args">args description</param>
         static void Main(string[] args)
         {
+            Console.WriteLine("year of birth");
+            string userInput = Console.ReadLine();
+
+            int yearOfBirth = int.Parse(userInput);
+            bool isUserOver18 = DateTime.Now.Date.Year - yearOfBirth > 18;
+            if(isUserOver18)
+            {
+                Console.WriteLine("Hello");
+            }  else if (DateTime.Now.DayOfWeek == DayOfWeek.Sunday)
+            {
+                Console.WriteLine("Oh well it's Sunday");
+            }
+            else
+            {
+                Console.WriteLine("Not hello");
+            }
+
+            Console.WriteLine("Bye");
+
             // Typy zmiennych
             Console.WriteLine("Hello, World!");
             //Console.Write('Hello')  // Without end line
@@ -29,7 +53,7 @@ namespace FristProject
             decimal decimalNumber = 1.5M; //M - deklarujesz ze to jest wartosc typu decimal, inaczej domyslnie bedzie double
             double doubleNumber = 1.5; //Domyslnie double
 
-            // ----------------- Dklarowanie zmiennej typu string --------------------
+            // ----------------- Deklarowanie zmiennej typu string --------------------
             string message1;
             message1 = "some value";
 
@@ -49,7 +73,12 @@ namespace FristProject
             string result = sb.ToString();
             Console.WriteLine(result);
 
+            /* this is a
+             multi-line
+            comment
+            */
 
         }
     }
-} 
+    #endregion
+}
