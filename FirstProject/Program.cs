@@ -2,35 +2,37 @@
 
 namespace Coding.Exercise
 {
-   
-    
+
+    public class BMI
+    {
+        /// <summary>
+        /// Calcualte BMI
+        /// </summary>
+        /// <param name="weight">kg, ex 195</param>
+        /// <param name="height">meters, ex: 1.95</param>
+        /// <returns></returns>
+        public static float CalculateBMI(float weight, float height)
+        { 
+            return weight / (height * height);
+        }
+    }
 
     class Program
     {
         static void Main(string[] args)
         {
 
-            //-----------Konwertowanie typów i rzutowanie
-            byte byteValue = 100;
-            int intValue = byteValue;
-            byte byteValue2 = (byte)intValue; // if intValue is bigger byte ranage, then and overflow occured;
+            Console.WriteLine("Podaj wzrost (m)");
+            string height = Console.ReadLine();
+            Console.WriteLine("Podaj wagę (kg)");
+            string wieght = Console.ReadLine();
 
-            double doubleValue = 3.5;
-            int intValue2 = (int)doubleValue; // numbers after digits will be losts
+            float floatHeight;
+            float floatWeight;
+            if(float.TryParse(height, out floatHeight) && float.TryParse(wieght, out floatWeight)) {
+                float result = BMI.CalculateBMI(floatWeight, floatHeight);
+                Console.WriteLine(result);
 
-            string strinValue2 = intValue.ToString();
-
-            string userInput = Console.ReadLine();
-            int yearsOfBirth;
-            if(int.TryParse(userInput, out yearsOfBirth))
-            {
-                int age = DateTime.Now.Year - yearsOfBirth;
-
-                Console.WriteLine("You are " + age);
-            }
-            else
-            {
-                Console.WriteLine("Incorect valeu");
             }
         }
     }
