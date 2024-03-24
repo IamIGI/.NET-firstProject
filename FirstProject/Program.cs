@@ -2,37 +2,36 @@
 
 namespace Coding.Exercise
 {
-    public class GradeCalculator
-    {
-        public static string CalculateGrade(double percentage)
+   
+        public class ParkingCalculator
         {
-            if (percentage >= 90)
+            public static double CalculateParkingFee(int hours)
             {
-            return "A";
-                
-            } else if (percentage >= 80)
+                double result = 0;
+            // TODO: Uzupełnij implementację kalkulatora opłat za parkowanie
+            switch (hours)
             {
-                return  "B";
-            } else if (percentage >= 70)
-            {
-                return  "C";
+                case 1:
+                    result = 5;
+                    break;
+
+                default:
+                    int remainingHours = hours - 1;
+                    result = 5 + remainingHours * 3;
+                    break;
             }
-            else if (percentage >= 60)
-            {
-                return "D";
-            } else
-            {
-                return "F";
+
+            return result;
             }
-            // przykładowy rezultat - zwracana jest ocena A
         }
-    }
+    
 
     class Program
     {
         static void Main(string[] args)
         {
-            string result = GradeCalculator.CalculateGrade(60);
+
+            double result = ParkingCalculator.CalculateParkingFee(1);
 
             Console.WriteLine(result);
         }
