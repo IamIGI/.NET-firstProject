@@ -3,27 +3,6 @@
 namespace Coding.Exercise
 {
    
-        public class ParkingCalculator
-        {
-            public static double CalculateParkingFee(int hours)
-            {
-                double result = 0;
-            // TODO: Uzupełnij implementację kalkulatora opłat za parkowanie
-            switch (hours)
-            {
-                case 1:
-                    result = 5;
-                    break;
-
-                default:
-                    int remainingHours = hours - 1;
-                    result = 5 + remainingHours * 3;
-                    break;
-            }
-
-            return result;
-            }
-        }
     
 
     class Program
@@ -31,9 +10,28 @@ namespace Coding.Exercise
         static void Main(string[] args)
         {
 
-            double result = ParkingCalculator.CalculateParkingFee(1);
+            //-----------Konwertowanie typów i rzutowanie
+            byte byteValue = 100;
+            int intValue = byteValue;
+            byte byteValue2 = (byte)intValue; // if intValue is bigger byte ranage, then and overflow occured;
 
-            Console.WriteLine(result);
+            double doubleValue = 3.5;
+            int intValue2 = (int)doubleValue; // numbers after digits will be losts
+
+            string strinValue2 = intValue.ToString();
+
+            string userInput = Console.ReadLine();
+            int yearsOfBirth;
+            if(int.TryParse(userInput, out yearsOfBirth))
+            {
+                int age = DateTime.Now.Year - yearsOfBirth;
+
+                Console.WriteLine("You are " + age);
+            }
+            else
+            {
+                Console.WriteLine("Incorect valeu");
+            }
         }
     }
 }
