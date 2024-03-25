@@ -1,4 +1,4 @@
-﻿using FirstProject;
+﻿using FirstProject.Enums; //importing other file, by fix namespace value
 using System;
 
 namespace Coding.Exercise
