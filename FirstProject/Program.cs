@@ -1,5 +1,4 @@
-﻿using FirstProject.Enums; //importing other file, by fix namespace value
-using System;
+﻿using System;//Set debug whenever you want, and click f10, to go line by line
 
 namespace Coding.Exercise
 {
@@ -9,43 +8,21 @@ namespace Coding.Exercise
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("What is your gender? 1 - Male, 2 - Female");
-            string userInput = Console.ReadLine();  
-            //Rzutujemy na typ Gender, bo Enum.Parse zwraca nam enuma z userInput-a
-            Gender userGender = (Gender)Enum.Parse(typeof(Gender), userInput);
+            Console.WriteLine("Podaj date swoich urodzin w formacie: yyyy-mm-dd");
+            string value = Console.ReadLine();
+            if (value.Length == 0) return;
 
-            if(userGender == Gender.Male)
-            {
-                Console.WriteLine("Only women allowed");
-            }
-            else
-            {
-                Console.WriteLine("hi!");
-            }
+            //pass (dd.MM.yyyy)
+            //DateTime dateOfBirth = DateTime.Parse(value);
 
-
-
-            //Nullable exmaple:
-            int? favNumber = 3;
-            Console.WriteLine("Fav number: " + (favNumber.HasValue ? favNumber.Value.ToString() : ""));
-
-
-            string[] cars = { "Volvo", "Opel", "BMW" };
-            try
+            if(DateTime.TryParseExact(value, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out DateTime inputDate))
             {
-                Console.WriteLine(cars[3]);
-            }
-           catch( IndexOutOfRangeException e)
+                TimeSpan difference = DateTime.Now.Date - inputDate;
+                Console.WriteLine($"Number of days elapsed since: {value}: {difference.TotalDays}");
+            } else
             {
-                Console.WriteLine("Podales wartosc z poza zakresu tablicy");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-            finally
-            {
-                Console.WriteLine("Always execute");
+                Console.WriteLine("Invalid date format. Please enter the date in yyyy-MM-dd format.");
+
             }
         }
     }
